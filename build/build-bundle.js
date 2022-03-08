@@ -94,7 +94,7 @@ async function build(entryPath, distPath, opts = {minify: true}) {
     'intl-pluralrules',
     'intl',
     'pako/lib/zlib/inflate.js',
-    'raven',
+    '@sentry/node',
     'source-map',
     'ws',
     require.resolve('../lighthouse-core/gather/connections/cri.js'),
@@ -131,6 +131,9 @@ async function build(entryPath, distPath, opts = {minify: true}) {
           // This package exports to default in a way that causes Rollup to get confused,
           // resulting in MessageFormat being undefined.
           'require(\'intl-messageformat\').default': 'require(\'intl-messageformat\')',
+          // Below we replace lighthouse-logger with a local copy, which is ES modules. Need
+          // to change every require of the package to reflect this.
+          'require(\'lighthouse-logger\');': 'require(\'lighthouse-logger\').default;',
           // Rollup doesn't replace this, so let's manually change it to false.
           'require.main === module': 'false',
           // TODO: Use globalThis directly.
@@ -155,7 +158,6 @@ async function build(entryPath, distPath, opts = {minify: true}) {
         // that's all that's needed, so make a mini-polyfill.
         // @see https://github.com/GoogleChrome/lighthouse/issues/5273
         // TODO: remove when not needed for pubads (https://github.com/googleads/publisher-ads-lighthouse-plugin/pull/325)
-        // and robots-parser (https://github.com/samclarke/robots-parser/pull/23)
         'url': 'export const URL = globalThis.URL;',
       }),
       rollupPlugins.json(),
@@ -211,12 +213,15 @@ async function cli(argv) {
   // Take paths relative to cwd and build.
   const [entryPath, distPath] = argv.slice(2)
     .map(filePath => path.resolve(process.cwd(), filePath));
-  build(entryPath, distPath);
+  await build(entryPath, distPath);
 }
 
 // Test if called from the CLI or as a module.
 if (require.main === module) {
-  cli(process.argv);
+  cli(process.argv).catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 } else {
   module.exports = {
     /** The commit hash for the current HEAD. */

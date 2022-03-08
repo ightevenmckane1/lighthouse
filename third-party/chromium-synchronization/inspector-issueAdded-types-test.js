@@ -38,18 +38,18 @@ Array [
   "blockedByResponseIssueDetails",
   "clientHintIssueDetails",
   "contentSecurityPolicyIssueDetails",
+  "cookieIssueDetails",
   "corsIssueDetails",
   "deprecationIssueDetails",
+  "federatedAuthRequestIssueDetails",
   "genericIssueDetails",
   "heavyAdIssueDetails",
   "lowTextContrastIssueDetails",
   "mixedContentIssueDetails",
   "navigatorUserAgentIssueDetails",
   "quirksModeIssueDetails",
-  "sameSiteCookieIssueDetails",
   "sharedArrayBufferIssueDetails",
   "twaQualityEnforcementDetails",
-  "wasmCrossOriginModuleSharingIssue",
 ]
 `);
   });

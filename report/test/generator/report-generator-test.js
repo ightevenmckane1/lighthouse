@@ -101,7 +101,7 @@ category,score
 \\"pwa\\",\\"0.3\\"
 
 category,audit,score,displayValue,description
-\\"performance\\",\\"first-contentful-paint\\",\\"0.02\\",\\"6.8 s\\",\\"First Contentful Paint marks the time at which the first text or image is painted. [Learn more](https://web.dev/first-contentful-paint/).\\"
+\\"performance\\",\\"first-contentful-paint\\",\\"0.01\\",\\"6.8 s\\",\\"First Contentful Paint marks the time at which the first text or image is painted. [Learn more](https://web.dev/first-contentful-paint/).\\"
 \\"performance\\",\\"interactive\\",\\"0.41\\",\\"8.2 s\\",\\"Time to interactive is the amount of time it takes for the page to become fully interactive. [Learn more](https://web.dev/interactive/).\\"
 \\"performance\\",\\"speed-index\\",\\"0.21\\",\\"8.1 s\\",\\"Speed Index shows how quickly the contents of a page are visibly populated. [Learn more](https://web.dev/speed-index/).\\"
 \\"performance\\",\\"total-blocking-time\\",\\"0.2\\",\\"1,220 ms\\",\\"Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds. [Learn more](https://web.dev/lighthouse-total-blocking-time/).\\"
