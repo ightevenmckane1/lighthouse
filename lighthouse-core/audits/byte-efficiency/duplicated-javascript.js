@@ -169,7 +169,7 @@ class DuplicatedJavascript extends ByteEfficiencyAudit {
             networkRecords.find(n => n.url === url);
 
           if (!script || script.length === undefined) {
-            // This should never happen because we found the wasted bytes from bundles, which required contents in a ScriptElement.
+            // This should never happen because we found the wasted bytes from bundles, which required contents in a Script.
             continue;
           }
 
