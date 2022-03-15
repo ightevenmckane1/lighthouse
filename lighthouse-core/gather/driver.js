@@ -308,6 +308,8 @@ class Driver {
     // We want to receive information about network requests from iframes, so enable the Network domain.
     await this.sendCommandToSession('Network.enable', event.sessionId);
 
+    await this.sendCommandToSession('Debugger.enable', event.sessionId);
+
     // We also want to receive information about subtargets of subtargets, so make sure we autoattach recursively.
     await this.sendCommandToSession('Target.setAutoAttach', event.sessionId, {
       autoAttach: true,
