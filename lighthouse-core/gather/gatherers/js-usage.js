@@ -81,11 +81,9 @@ class JsUsage extends FRGatherer {
 
     for (const scriptUsage of this._scriptUsages) {
       // If `url` is blank, that means the script was anonymous (eval, new Function, onload, ...).
-      // Or, it's because it was code Lighthouse over the protocol via `Runtime.evaluate`.
-      // We currently don't consider coverage of anonymous scripts, and we definitely don't want
-      // coverage of code Lighthouse ran to inspect the page, so we ignore this ScriptCoverage if
-      // url is blank.
-      if (scriptUsage.url === '') {
+      if (scriptUsage.url === '' || scriptUsage.url === 'lighthouse-eval.js') {
+        // We currently don't consider coverage of anonymous scripts, and we definitely don't want
+        // coverage of code Lighthouse ran to inspect the page, so we ignore this ScriptCoverage.
         continue;
       }
 

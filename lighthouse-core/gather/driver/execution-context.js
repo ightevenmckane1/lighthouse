@@ -97,7 +97,8 @@ class ExecutionContext {
             .catch(${pageFunctions.wrapRuntimeEvalErrorInBrowserString})
             .then(resolve);
         });
-      }())`,
+      }())
+      //# sourceURL=lighthouse-eval.js`,
       includeCommandLineAPI: true,
       awaitPromise: true,
       returnByValue: true,
