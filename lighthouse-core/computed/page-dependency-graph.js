@@ -394,6 +394,8 @@ class PageDependencyGraph {
     const networkNodeOutput = PageDependencyGraph.getNetworkNodeOutput(networkRecords);
     const cpuNodes = PageDependencyGraph.getCPUNodes(processedTrace);
 
+    // TODO: Remove this usage of `findMainDocument`. This assumption isn't true if there was a JS redirect.
+    // ...
     // The main document request is the earliest network request *of type document*.
     // This will be different from the root request when there are server redirects.
     const mainDocumentRequest = NetworkAnalyzer.findMainDocument(networkRecords);
