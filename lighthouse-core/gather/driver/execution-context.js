@@ -196,7 +196,8 @@ class ExecutionContext {
       ${ExecutionContext._cachedNativesPreamble};
       ${depsSerialized};
       (${mainFn})(${argsSerialized});
-    })()`;
+    })()
+    //# sourceURL=lighthouse-eval.js`;
 
     await this._session.sendCommand('Page.addScriptToEvaluateOnNewDocument', {source: expression});
   }
